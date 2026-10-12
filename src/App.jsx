@@ -8,15 +8,15 @@ function App() {
     { id: 3, nome: "Once Upon a Time in the West", genero: "Epic",ano:1968, duracao: 166 },
   ])
 
-  const [filmeEscolhido, setFilmeEscolhido] = useState("Epic")
+  const [generoEscolhido, setGeneroEscolhido] = useState("Epic")
 
-  const filmesFiltrados = filmes.filter((filme) => filme.genero === filmeEscolhido)
+  const filmesFiltrados = filmes.filter((filme) => filme.genero === generoEscolhido)
 
   return (
     <div>
       <h1>Movies to Watch</h1>
 
-      <select value={filmeEscolhido} onChange={(evento) => setFilmeEscolhido(evento.target.value)}>
+      <select value={generoEscolhido} onChange={(evento) => setGeneroEscolhido(evento.target.value)}>
         <option value="Epic">Epic</option>
         <option value="Drama">Drama</option>
         <option value="Adventure">Adventure</option>
