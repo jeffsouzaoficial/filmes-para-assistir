@@ -55,6 +55,19 @@ function App() {
       setFilmes([...filmes, novoFilme])
 }
 
+  function filmeAssistido(id) {
+    const confirmou = confirm("O filme foi assistido?")
+
+    if (confirmou === false) {
+      return
+    }
+    setFilmes(
+      filmes.map((filme) =>
+        filme.id === id ? { ...filme, assistido: true } : filme
+      )
+    )
+}
+
   return (
     <div>
       <h1>Movies to Watch</h1>
@@ -110,6 +123,9 @@ function App() {
         genero={filme.genero} 
         ano={filme.ano} 
         duracao={filme.duracao}
+        filmeAssistido={filmeAssistido}
+        assistido={filme.assistido}
+        id={filme.id}
         />
       ))}
 

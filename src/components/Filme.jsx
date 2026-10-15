@@ -9,6 +9,11 @@ function Filme(props) {
       <p>Gênero: {props.genero}</p>
       <p>Ano: {props.ano}</p>
       <p>Duração: {horas}h {minutosRestantes}min</p>
+      {props.assistido === false ? (
+      <button onClick={() => props.filmeAssistido(props.id)}>Marcar como assistido</button>
+      ) : (
+        <p>Filme assistido</p>
+      )}
     </div>
   )
 }
