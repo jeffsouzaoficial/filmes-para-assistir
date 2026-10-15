@@ -3,6 +3,9 @@ function Filme(props) {
   const horas = Math.floor(props.duracao / 60)
   const minutosRestantes = props.duracao % 60
 
+  const mensagem = `Assista o filme ${props.nome} (${props.ano})!`
+  const link = `https://wa.me/?text=${encodeURIComponent(mensagem)}`
+
   return (
     <div>
       <h2>{props.nome}</h2>
@@ -14,6 +17,8 @@ function Filme(props) {
       ) : (
         <p>Filme assistido</p>
       )}
+
+      <a href={link} target="_blank">Compartilhar no WhatsApp</a>
     </div>
   )
 }

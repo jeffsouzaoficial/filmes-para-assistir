@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Filme from "./components/Filme";
 
 function App() {
-    const filmesSalvos = JSON.parse(localStorage.getItem("filmes-para-assistir"))
+  const filmesSalvos = JSON.parse(localStorage.getItem("filmes-para-assistir"))
 
   const [filmes, setFilmes] = useState(filmesSalvos ||[
     { id: 1, nome: "The Good, the Bad and the Ugly", genero: "Epic",ano:1966, duracao: 180, assistido: true },
