@@ -40,6 +40,8 @@ function App() {
 
   const filmesFiltrados = filmes.filter((filme) => filme.genero === generoEscolhido)
 
+  const filmesOrdenados = [...filmesFiltrados].sort((a, b) => a.ano - b.ano)
+
   const minutosFilmes = filmes.reduce((total, filme) => total + filme.duracao, 0)
 
   const horas = Math.floor(minutosFilmes / 60)
@@ -71,6 +73,11 @@ function App() {
         assistido: false,
       }
       setFilmes([...filmes, novoFilme])
+
+      setNovoNome("")
+      setNovoAno("")
+      setNovaDuracao("")
+      setNovoGenero("Epic")
 }
 
   function filmeAssistido(id) {
@@ -134,7 +141,7 @@ function App() {
         <option value="Action">Action</option>
       </select>
 
-      {filmesFiltrados.map((filme) => (
+      {filmesOrdenados.map((filme) => (
         <Filme
         key={filme.id} 
         nome={filme.nome} 
