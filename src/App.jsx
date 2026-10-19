@@ -20,11 +20,23 @@ function App() {
 
   const [novaDuracao, setNovaDuracao] = useState("")
 
+  const [sugestoes, setSugestoes] = useState([])
+
+
 
   useEffect(() => {
     localStorage.setItem("filmes-para-assistir", JSON.stringify(filmes))
   }, [filmes])
 
+  useEffect(() => {
+    async function buscarSugestoes() {
+      const resposta = await fetch(`https://api.sampleapis.com/movies/western`)
+      const dados = await resposta.json()
+      setSugestoes(dados)
+    }
+
+    buscarSugestoes()
+  }, [])
 
   const filmesFiltrados = filmes.filter((filme) => filme.genero === generoEscolhido)
 
@@ -142,6 +154,16 @@ function App() {
       <Filme nome="Django Unchained" genero="Western / Drama" ano={2012} duracao={164} />
       <Filme nome="The Revenant" genero="Western / Adventure / Drama" ano={2015} duracao={156} />*/}
       
+    <h2>Sugestões de westerns</h2>
+      <ul>
+        {sugestoes.map((sugestao) => (
+          <li key={sugestao.id}>
+            <img src={sugestao.posterURL} alt={sugestao.title} width="100" />
+            <p>{sugestao.title}</p>
+          </li>
+        ))}
+      </ul>
+        
     </div>
   )
 }
